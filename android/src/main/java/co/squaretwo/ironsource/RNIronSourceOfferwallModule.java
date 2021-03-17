@@ -86,6 +86,13 @@ public class RNIronSourceOfferwallModule extends ReactContextBaseJavaModule {
                          */
                         @Override
                         public boolean onOfferwallAdCredited(int credits, int totalCredits, boolean totalCreditsFlag) {
+                            //
+                            WritableMap map = Arguments.createMap();
+                            map.putInt("credits", credits);
+                            map.putInt("totalCredits", totalCredits);
+                            map.putBoolean("totalCreditsFlag", totalCreditsFlag);
+                            //
+                            sendEvent("ironSourceOfferwallReceivedCredits", map);
                             return false;
                         }
                         /**
